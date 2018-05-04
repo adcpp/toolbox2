@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body background="back">
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<div id="app">
+    <h1>{{ nome + ' ' + sobrenome + ' ' + idade}}</h1>
+    <h3>{{ textoNome }}</h3>
+    <input type="text" v-on:input="alteraNome">
+    <h3>{{ textoSobrenome }}</h3>
+    <input type="text" v-on:input="alteraSobrenome">
+    <h3>{{ textoIdade }}</h3>
+    <input type="text" v-on:input="alteraIdade">
+    <h3>{{idade3 + idade*3}}</h3>
+    <h3>{{numerorandom + aleatorio}}</h3>
+    <h3>{{imgtxt}}</h3>
+    <input type="text" v-on:input="Imagem">
+    <div><img :src="imagem" alt="" style="width:100px;height:100px"></div>
+</div>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            nome: "",
+            sobrenome: "",
+            textoNome: "Nome",
+            textoSobrenome:"Sobrenome",
+            textoIdade: "Idade",
+            idade: "",
+            idade3: "Idade *3= ",
+            numerorandom:"Numero Aleatorio: ",
+            imgtxt:"Insira o url para imagem",
+            aleatorio: Math.random()*2,
+            imagem: "",
+            back:""
+        },
+        methods: {
+            alteraNome: function(event){
+               this.nome=event.target.value
+            },
+            alteraSobrenome: function(event){
+               this.sobrenome=event.target.value
+            },
+            alteraIdade: function(event){
+                this.idade=event.target.value
+            },
+            Imagem: function(event){
+                this.imagem=event.target.value
+            },
+            back1: function(event){
+                this.back=event.target.value
+            }
+        }
+    })
+    </script>
+</body>
+</html>

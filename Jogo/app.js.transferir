@@ -1,0 +1,49 @@
+new Vue({
+    el:'#app',
+    data:{
+        playerHealth: 100,
+        monsterHealth: 100,
+        gameIsRunning: false,
+        turns: []
+    },
+    methods:{
+        startGame: function(){
+            this.gameIsRunning=true;
+            this.playerHealth=100;
+            this.mosterHealth=100;
+        },
+        attack: function(){
+            //var damage=this.calculatedamage(3,10);
+            var max=10;
+            var min= 3;
+            var damage=Math.max(Math.floor(Math.random()*max)+1,min)
+            this.monsterHealth-=damage;
+            this.turns.unshift({
+                isPlayer:true,
+                text: 'Player hits Monster for ' + damage
+            });
+            if (this.checkwin()){
+                if (this.monsterHealth<=0){
+                    alert('You Win!');
+                    this.gameIsRunning=false;
+                    return
+                }
+                else if (this.playerHealth<=0){
+                    alert('You Lose!')
+                }
+                return;
+            }
+
+
+        },
+        specialAttack: function(){
+
+        },
+        heal: function(){
+
+        },
+        giveUp: function(){
+
+        },
+    }
+});
