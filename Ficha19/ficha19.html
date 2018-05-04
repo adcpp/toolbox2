@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercício 3</title>
+</head>
+
+<body>
+    <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+    <div id="exercicio3" >
+        <h1>J O G O</h1>
+        <h3>Adivinha o número</h3>
+        <!-- 1) Exibir um alerta enquanto não atingir o valor  37 e informar quando adivinhar (ou ultrapassar) -->
+        <div>
+            <p>Valor Atual: {{ valor }}</p>
+            <button @click="valor += 5" v-on:click="pista" >Soma 5 </button>
+            <button @click="valor += 1" v-on:click="pista">Soma 1</button>
+            <br>
+            <br>
+            <button @click="valor -= 5" v-on:click="pista">Menos 5</button>
+            <button @click="valor -= 1" v-on:click="pista">Menos 1</button>
+            <p>{{ resultado }}</p>
+        </div>
+        <!-- 2) Analiza o valor introduzido e faz reset ao input após 5 segundos (obs: setTimeout(..., 5000) -->
+        <div>
+            <input type="text" v-on:input="alerta">
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el: '#exercicio3',
+            data: {
+                valor: 0,
+                resultado:"",
+            },
+        methods:{
+           alerta: function() {
+               if(event.target.value>37){
+        alert("Ultrapassou o Valor!")
+               }
+               else if(event.target.value<0){
+                   alert("Pista-> Nao é um número negativo")
+               }
+               else if(event.target.value==37){
+                   alert("Acertou!")
+               }
+    },
+        pista: function (){
+            if(this.valor>37){
+                this.resultado="Acima do valor!"
+               }
+               else if(this.valor<0){
+                   this.resultado="Não é um numero negativo!"
+               }
+               else if(this.valor==37){
+                   this.resultado="Acertou!"
+               }
+               else {
+                   this.resultado="Abaixo do valor!"
+               } 
+        },
+    }});
+
+    </script>
+    <script>
+    </script> 
+</body>
+
+</html>
